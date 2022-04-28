@@ -16,11 +16,15 @@ const arrayOfBooksInfo = [
     author: 'Suzanne Collins',
   },
 ];
+
+const assignmentLooper = (a) => {
+  const books = <Book title={a.title} author={a.author} />;
+  return books;
+};
+
 const Books = () => (
   <div>
-    <Book title={arrayOfBooksInfo[0].title} author={arrayOfBooksInfo[0].author} />
-    <Book title={arrayOfBooksInfo[1].title} author={arrayOfBooksInfo[1].author} />
-    <Book title={arrayOfBooksInfo[2].title} author={arrayOfBooksInfo[2].author} />
+    {arrayOfBooksInfo.map((i) => assignmentLooper(i))}
     <Input />
   </div>
 );
