@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.user-icons {
+  font-size: 20px;
+  border: 1px solid rgba(233, 233, 233, 1);
+  padding: 10px;
+  border-radius: 50%;
+  color: #0290ff;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 25px;
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+    h1 {
+      color: #0290ff;
+      font-family: 'Montserrat', serif;
+      font-weight: 700;
+      font-size: 34px;
+    }
+
+    ul {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+
+      li {
+        font-family: 'Montserrat', serif;
+        font-weight: 400;
+
+        a {
+          text-decoration: none;
+          color: #363636;
+        }
+      }
+    }
+  }
+}
