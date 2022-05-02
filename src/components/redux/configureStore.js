@@ -1,6 +1,6 @@
 import { createStore, combineReducers } from 'react-redux';
-import { createActionForCategory, reducerForCategory } from './categories/categories';
-import { reducer, createActionForBook } from './books/books';
+import reducerForCategory, { createActionForCategory } from './categories/categories';
+import reducer, { createActionForBook } from './books/books';
 
 const rootReducer = combineReducers({ books: reducer, categories: reducerForCategory });
 
