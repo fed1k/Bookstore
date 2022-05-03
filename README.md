@@ -16,6 +16,10 @@ Follow the steps below to run this project on you local machine
 
 To get a local copy up and running follow these simple example steps.
 
+  * [Clone](https://github.com/fed1k/Bookstore.git)
+  * cd Bookstore
+  * npm start
+
 ## Prerequisites
   * Understanding of git and github
   * Setup & Install
