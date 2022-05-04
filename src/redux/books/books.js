@@ -1,19 +1,32 @@
 const ADD_BOOK = 'ADD_BOOK';
 const REMOVE_BOOK = 'REMOVE_BOOK';
 
-const reducer = (initialState = [], action) => {
+export const initialArrayOfBooks = [
+  {
+    title: 'Pride and Prejiduce',
+    author: 'Jane Austen',
+    id: 1,
+  },
+  {
+    title: 'Hamlet',
+    author: 'William Shakespeare',
+    id: 2,
+  },
+];
+
+const reducer = (initialState = initialArrayOfBooks, action) => {
   switch (action.type) {
     case ADD_BOOK:
       return [...initialState, action.payload];
     case REMOVE_BOOK:
-      return [...initialState.filter((book) => (book.id !== action.id))];
+      return [...initialState.filter((book) => (book.id !== action.payload))];
     default:
       return initialState;
   }
 };
 
 const createActionForBookToAdd = (title, author) => ({
-  type: ADD_BOOK,
+  type: 'NON_ACTIVE',
   payload: {
     title,
     author,
