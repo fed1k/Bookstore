@@ -5,10 +5,12 @@ export const initialArrayOfBooks = [
   {
     title: 'Pride and Prejiduce',
     author: 'Jane Austen',
+    id: 1,
   },
   {
     title: 'Hamlet',
     author: 'William Shakespeare',
+    id: 2,
   },
 ];
 
@@ -17,7 +19,7 @@ const reducer = (initialState = initialArrayOfBooks, action) => {
     case ADD_BOOK:
       return [...initialState, action.payload];
     case REMOVE_BOOK:
-      return [...initialState.filter((book) => (book.id !== action.id))];
+      return [...initialState.filter((book) => (book.id !== action.payload))];
     default:
       return initialState;
   }

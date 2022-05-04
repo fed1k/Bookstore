@@ -3,8 +3,9 @@ import { useSelector } from 'react-redux';
 import Book from './Book';
 import Input from './Input';
 
+let count = 0;
 const assignmentLooper = (a) => {
-  const books = <Book title={a.title} author={a.author} />;
+  const books = <Book title={a.title} author={a.author} id={a.id} key={count += 1} />;
   return books;
 };
 

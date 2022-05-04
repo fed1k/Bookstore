@@ -17,8 +17,10 @@ const Input = () => {
   };
 
   const addBook = () => {
-    dispatch({ type: 'ADD_BOOK', payload: { title: state.title, author: state.author } });
-    setState({ title: '', author: '' });
+    if (state.author && state.title) {
+      dispatch({ type: 'ADD_BOOK', payload: { title: state.title, author: state.author } });
+      setState({ title: '', author: '' });
+    }
   };
 
   const enterEvent = (e) => {
@@ -31,7 +33,7 @@ const Input = () => {
     <div>
       <h2>ADD NEW BOOK</h2>
       <form action="post">
-        <input type="text" placeholder="Book title" value={state.title} onChange={(e) => handleChangeOfTitle(e)} />
+        <input type="text" placeholder="Book title" value={state.title} onChange={(e) => handleChangeOfTitle(e)} onKeyUp={(e) => enterEvent(e)} />
         <input type="text" placeholder="Author" value={state.author} onChange={(e) => handleChangeOfAuthor(e)} onKeyUp={(e) => enterEvent(e)} />
         <button type="button" onClick={addBook}>ADD BOOK</button>
       </form>
