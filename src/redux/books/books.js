@@ -1,7 +1,18 @@
 const ADD_BOOK = 'ADD_BOOK';
 const REMOVE_BOOK = 'REMOVE_BOOK';
 
-const reducer = (initialState = [], action) => {
+const initialArrayOfBooks = [
+  {
+    title: 'Pride and Prejiduce',
+    author: 'Jane Austen',
+  },
+  {
+    title: 'Hamlet',
+    author: 'William Shakespeare',
+  },
+];
+
+const reducer = (initialState = initialArrayOfBooks, action) => {
   switch (action.type) {
     case ADD_BOOK:
       return [...initialState, action.payload];
