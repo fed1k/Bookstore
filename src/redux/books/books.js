@@ -1,7 +1,7 @@
 const ADD_BOOK = 'ADD_BOOK';
 const REMOVE_BOOK = 'REMOVE_BOOK';
 
-const initialArrayOfBooks = [
+export const initialArrayOfBooks = [
   {
     title: 'Pride and Prejiduce',
     author: 'Jane Austen',
@@ -24,7 +24,7 @@ const reducer = (initialState = initialArrayOfBooks, action) => {
 };
 
 const createActionForBookToAdd = (title, author) => ({
-  type: ADD_BOOK,
+  type: 'NON_ACTIVE',
   payload: {
     title,
     author,
