@@ -1,22 +1,9 @@
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 
 const ADD_BOOK = 'ADD_BOOK';
 const REMOVE_BOOK = 'REMOVE_BOOK';
 
-export const initialArrayOfBooks = [
-  {
-    item_id: uuidv4(),
-    title: 'Pride and Prejiduce',
-    author: 'Jane Austen',
-    category: 'Love',
-  },
-  {
-    item_id: uuidv4(),
-    title: 'Hamlet',
-    author: 'William Shakespeare',
-    category: 'Tragedy',
-  },
-];
+export const initialArrayOfBooks = [];
 
 const reducer = (initialState = initialArrayOfBooks, action) => {
   switch (action.type) {
@@ -24,6 +11,8 @@ const reducer = (initialState = initialArrayOfBooks, action) => {
       return [...initialState, action.payload];
     case REMOVE_BOOK:
       return [...initialState.filter((book) => (book.item_id !== action.payload))];
+    case 'UPDATE_STORE':
+      return action.payload;
     default:
       return initialState;
   }
@@ -44,21 +33,36 @@ const createActionForBookToRemove = (id) => ({
   payload: id,
 });
 
-// const globalAppApi = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/3VUiqfgy3aXwGwDzzEyK/books';
+const createActionForUpdateStore = (list) => ({
+  type: 'UPDATE_STORE',
+  payload: list,
+});
 
-// export const thunkFunction = () => async (dispatch, getState) => {
-//   const dataInStore = getState().books[0];
-//   console.log(dataInStore);
+const globalAppApi = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/ypxIDGTAyYvIOEECySyW/books';
 
-//   await fetch(globalAppApi, {
-//     method: 'POST',
-//     headers: {
-//       'Content-type': 'application/json',
-//     },
-//     body: JSON.stringify(dataInStore),
-//   }).then((response) => response.text()).then((json) => console.log(json));
-// };
-// console.log(uuidv4());
+export const postDataToApi = () => async (dispatch, getState) => {
+  const identifyAddedBook = getState().books.length - 1;
+  const dataInStore = getState().books[identifyAddedBook];
+
+  await fetch(globalAppApi, {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(dataInStore),
+  }).then((response) => response.text());
+};
+
+export const getDataFromAPi = () => async (dispatch) => {
+  const response = await fetch(globalAppApi).then((data) => data.json());
+  const books = Object.keys(response).map((key) => {
+    const { title, author, category } = response[key][0];
+    return {
+      item_id: key, title, author, category,
+    };
+  });
+  dispatch(createActionForUpdateStore(books));
+};
 
 export default reducer;
 export { createActionForBookToAdd, createActionForBookToRemove };

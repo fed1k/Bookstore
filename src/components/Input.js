@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-// import { thunkFunction } from '../redux/books/books';
+import { postDataToApi } from '../redux/books/books';
 
 const Input = () => {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const Input = () => {
         },
       });
       setState({ title: '', author: '' });
-      // dispatch(thunkFunction());
+      dispatch(postDataToApi());
     }
   };
 

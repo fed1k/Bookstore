@@ -1,7 +1,9 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getDataFromAPi } from '../redux/books/books';
 import Book from './Book';
 import Input from './Input';
+// import { getDataFromAPi } from './..redux/books/books';
 
 let count = 0;
 const assignmentLooper = (a) => {
@@ -19,6 +21,11 @@ const assignmentLooper = (a) => {
 
 const Books = () => {
   const initialArrayOfBooks = useSelector((state) => state);
+  console.log(initialArrayOfBooks);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getDataFromAPi());
+  }, []);
   return (
     <div className="main">
       {initialArrayOfBooks.books.map((i) => assignmentLooper(i))}
