@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+// import { thunkFunction } from '../redux/books/books';
 
 const Input = () => {
   const dispatch = useDispatch();
@@ -18,8 +20,14 @@ const Input = () => {
 
   const addBook = () => {
     if (state.author && state.title) {
-      dispatch({ type: 'ADD_BOOK', payload: { title: state.title, author: state.author } });
+      dispatch({
+        type: 'ADD_BOOK',
+        payload: {
+          title: state.title, author: state.author, item_id: uuidv4(), category: 'General',
+        },
+      });
       setState({ title: '', author: '' });
+      // dispatch(thunkFunction());
     }
   };
 
@@ -28,6 +36,9 @@ const Input = () => {
       addBook();
     }
   };
+  // const store = useSelector((state) => state);
+
+  // dispatch(thunkFunction());
 
   return (
     <div>

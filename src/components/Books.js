@@ -5,14 +5,22 @@ import Input from './Input';
 
 let count = 0;
 const assignmentLooper = (a) => {
-  const books = <Book title={a.title} author={a.author} id={a.id} key={count += 1} />;
+  const books = (
+    <Book
+      title={a.title}
+      author={a.author}
+      id={a.item_id}
+      key={count += 1}
+      category={a.category}
+    />
+  );
   return books;
 };
 
 const Books = () => {
   const initialArrayOfBooks = useSelector((state) => state);
   return (
-    <div>
+    <div className="main">
       {initialArrayOfBooks.books.map((i) => assignmentLooper(i))}
       <Input />
     </div>
