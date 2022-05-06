@@ -21,7 +21,6 @@ const assignmentLooper = (a) => {
 
 const Books = () => {
   const initialArrayOfBooks = useSelector((state) => state);
-  console.log(initialArrayOfBooks);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDataFromAPi());

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { deleteDataFromApi } from '../redux/books/books';
 
 const Book = ({
   title, author, id, category,
@@ -9,12 +10,25 @@ const Book = ({
   const dispatcher = () => {
     dispatch({ type: 'REMOVE_BOOK', payload: id });
   };
+  const [changeableId, setChangeableId] = useState(id);
+
   return (
     <div className="book">
       <p className="category-p">{category}</p>
       <h1>{title}</h1>
       <p>{author}</p>
-      <button type="button" onClick={dispatcher}>Remove</button>
+      <button
+        type="button"
+        onClick={() => {
+          dispatcher();
+          setChangeableId(id);
+          localStorage.setItem('id', JSON.stringify({ idkart: changeableId }));
+          dispatch(deleteDataFromApi());
+        }}
+      >
+        Remove
+
+      </button>
     </div>
   );
 };

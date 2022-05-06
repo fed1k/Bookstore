@@ -1,5 +1,3 @@
-// import { v4 as uuidv4 } from 'uuid';
-
 const ADD_BOOK = 'ADD_BOOK';
 const REMOVE_BOOK = 'REMOVE_BOOK';
 
@@ -50,7 +48,7 @@ export const postDataToApi = () => async (dispatch, getState) => {
       'Content-type': 'application/json',
     },
     body: JSON.stringify(dataInStore),
-  }).then((response) => response.text());
+  });
 };
 
 export const getDataFromAPi = () => async (dispatch) => {
@@ -62,6 +60,15 @@ export const getDataFromAPi = () => async (dispatch) => {
     };
   });
   dispatch(createActionForUpdateStore(books));
+};
+
+export const deleteDataFromApi = () => async () => {
+  const idkarta = JSON.parse(localStorage.getItem('id'));
+  const real = idkarta.idkart;
+  await fetch(`${globalAppApi}/${real}`, {
+    method: 'DELETE',
+    body: JSON.stringify({ item_id: real }),
+  });
 };
 
 export default reducer;
