@@ -1,18 +1,31 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getDataFromAPi } from '../redux/books/books';
 import Book from './Book';
 import Input from './Input';
 
 let count = 0;
 const assignmentLooper = (a) => {
-  const books = <Book title={a.title} author={a.author} id={a.id} key={count += 1} />;
+  const books = (
+    <Book
+      title={a.title}
+      author={a.author}
+      id={a.item_id}
+      key={count += 1}
+      category={a.category}
+    />
+  );
   return books;
 };
 
 const Books = () => {
   const initialArrayOfBooks = useSelector((state) => state);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getDataFromAPi());
+  }, []);
   return (
-    <div>
+    <div className="main">
       {initialArrayOfBooks.books.map((i) => assignmentLooper(i))}
       <Input />
     </div>
