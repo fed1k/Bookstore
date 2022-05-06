@@ -1,5 +1,4 @@
 const ACTIVE = 'ACTIVE';
-// const NOT_ACTIVE = 'NOT_ACTIVE';
 
 const undeCons = {
   cons: 'Under construction',

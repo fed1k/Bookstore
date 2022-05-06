@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getDataFromAPi } from '../redux/books/books';
 import Book from './Book';
 import Input from './Input';
-// import { getDataFromAPi } from './..redux/books/books';
 
 let count = 0;
 const assignmentLooper = (a) => {
