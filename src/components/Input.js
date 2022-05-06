@@ -37,7 +37,7 @@ const Input = () => {
     }
   };
   return (
-    <div>
+    <div className="input-div">
       <h2>ADD NEW BOOK</h2>
       <form action="post">
         <input type="text" placeholder="Book title" value={state.title} onChange={(e) => handleChangeOfTitle(e)} onKeyUp={(e) => enterEvent(e)} />
