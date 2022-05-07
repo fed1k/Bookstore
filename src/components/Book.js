@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { Pie } from '@pxblue/react-progress-icons';
 import { deleteDataFromApi } from '../redux/books/books';
 
 const Book = ({
@@ -37,20 +38,29 @@ const Book = ({
           <button type="button" className="edit">Edit</button>
         </div>
       </div>
-      <div className="chapter-div">
-        <p id="current-chapter">CURRENT CHAPTER</p>
-        <p className="completed-task">Chapter 3 A lesson learned</p>
-        <button
-          type="button"
-          className={progressClass}
-          onClick={() => {
-            setProgress('UPDATED');
-            setProgressClass('update-progress-btn-completed');
-          }}
-        >
-          {progress}
+      <div id="right">
+        <div className="percentage">
+          <Pie percent={67} size={100} color="#7CB9E8" ring={2} />
+          <div>
+            <span className="percent">67%</span>
+            <span id="completed">Completed</span>
+          </div>
+        </div>
+        <div className="chapter-div">
+          <p id="current-chapter">CURRENT CHAPTER</p>
+          <p className="completed-task">Chapter 3 A lesson learned</p>
+          <button
+            type="button"
+            className={progressClass}
+            onClick={() => {
+              setProgress('UPDATED');
+              setProgressClass('update-progress-btn-completed');
+            }}
+          >
+            {progress}
 
-        </button>
+          </button>
+        </div>
       </div>
 
     </div>
