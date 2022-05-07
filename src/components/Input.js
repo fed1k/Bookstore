@@ -18,6 +18,8 @@ const Input = () => {
     setState({ title: state.title, author: e.target.value });
   };
 
+  const [errorMsg, setErrorMsg] = useState('ADD BOOK');
+  const [errorMsgColor, setErrorMsgColor] = useState('addbook-btn');
   const addBook = () => {
     if (state.author && state.title) {
       dispatch({
@@ -28,6 +30,9 @@ const Input = () => {
       });
       setState({ title: '', author: '' });
       dispatch(postDataToApi());
+    } else {
+      setErrorMsg('FAILED');
+      setErrorMsgColor('addbook-btn-failed');
     }
   };
 
@@ -36,13 +41,38 @@ const Input = () => {
       addBook();
     }
   };
+
+  const isTextAvailable = () => {
+    if (state.title && state.author) {
+      setErrorMsg('ADD BOOK');
+      setErrorMsgColor('addbook-btn');
+    }
+  };
   return (
     <div className="input-div">
       <h2>ADD NEW BOOK</h2>
       <form action="post">
-        <input type="text" placeholder="Book title" value={state.title} onChange={(e) => handleChangeOfTitle(e)} onKeyUp={(e) => enterEvent(e)} />
-        <input type="text" placeholder="Author" value={state.author} onChange={(e) => handleChangeOfAuthor(e)} onKeyUp={(e) => enterEvent(e)} />
-        <button className="addbook-btn" type="button" onClick={addBook}>ADD BOOK</button>
+        <input
+          type="text"
+          placeholder="Book title"
+          value={state.title}
+          onChange={(e) => {
+            handleChangeOfTitle(e);
+            isTextAvailable();
+          }}
+          onKeyUp={(e) => enterEvent(e)}
+        />
+        <input
+          type="text"
+          placeholder="Author"
+          value={state.author}
+          onChange={(e) => {
+            handleChangeOfAuthor(e);
+            isTextAvailable();
+          }}
+          onKeyUp={(e) => enterEvent(e)}
+        />
+        <button className={errorMsgColor} type="button" onClick={addBook}>{errorMsg}</button>
       </form>
     </div>
   );
