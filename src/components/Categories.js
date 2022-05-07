@@ -7,8 +7,8 @@ const Categories = () => {
     dispatch({ type: 'ACTIVE' });
   };
   return (
-    <div>
-      <p>{useSelector((state) => state.categories.cons)}</p>
+    <div className="category-div">
+      <p id="construction-text">{useSelector((state) => state.categories.cons)}</p>
       <button type="button" onClick={showTextUnderConstruction}>Check status</button>
     </div>
   );

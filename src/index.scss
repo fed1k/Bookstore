@@ -1,6 +1,17 @@
+@mixin inputfield {
+  padding: 10px 14px;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+  outline: none;
+}
+
 * {
   margin: 0;
   padding: 0;
+}
+
+.App {
+  background-color: #fafafa;
 }
 
 .user-icons {
@@ -15,7 +26,8 @@
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #e8e8e8;
-  padding: 25px;
+  padding: 25px 7.5%;
+  background-color: #fff;
 
   div {
     display: flex;
@@ -48,12 +60,195 @@
 }
 
 .category-p {
-  opacity: 0.5;
+  opacity: 0.4;
   font-size: 19px;
+  font-family: 'Montserrat', serif;
+  font-weight: 700;
+  padding-bottom: 5px;
 }
 
 .main {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  background-color: #fafafa;
+  align-items: center;
+  margin-top: 3%;
+}
+
+.book {
+  background-color: #fff;
+  border: 1px solid #e8e8e8;
+  width: 85%;
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-div {
+  padding: 25px 0 35px 0;
+  width: 88%;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+
+  h2 {
+    opacity: 0.5;
+  }
+
+  form {
+    display: flex;
+    justify-content: space-between;
+
+    :first-child {
+      @include inputfield();
+
+      width: 50%;
+    }
+
+    :nth-child(2) {
+      width: 20%;
+
+      @include inputfield();
+    }
+
+    .addbook-btn {
+      background-color: #0290ff;
+      color: #fff;
+      padding: 15px 50px;
+      border: none;
+      border-radius: 3px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.comments {
+  border: none;
+  color: #659ccb;
+  background-color: #fff;
+  padding: 25px 15px 15px 0;
+}
+
+.edit {
+  padding: 25px 15px 15px 15px;
+  border: none;
+  color: #659ccb;
+  background-color: #fff;
+}
+
+.remove {
+  border-right: 1px solid #e8e8e8;
+  border-left: 1px solid #e8e8e8;
+  border-top: none;
+  border-bottom: none;
+  color: #659ccb;
+  background-color: #fff;
+  padding: 0 15px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.author {
+  color: #4587c0;
+  padding-top: 4px;
+}
+
+.category-div {
+  padding: 20px;
+
+  button {
+    border: 1px solid #e8e8e8;
+    padding: 7px 14px;
+    font-family: 'Montserrat', serif;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #e6e6e6;
+    }
+  }
+}
+
+#construction-text {
+  padding-bottom: 14px;
+  font-size: 19px;
+  font-family: 'Montserrat', serif;
+}
+
+.update-progress-btn {
+  border-radius: 3px;
+  background-color: #0290ff;
+  color: #fff;
+  padding: 15px 50px;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.chapter-div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-right: 50px;
+
+  #current-chapter {
+    font-family: 'Montserrat', serif;
+    opacity: 0.4;
+  }
+
+  .completed-task {
+    font-family: 'Montserrat', serif;
+    font-size: 18px;
+  }
+}
+
+.update-progress-btn-completed {
+  border-radius: 3px;
+  background-color: #3ac47d;
+  color: #fff;
+  padding: 15px 50px;
+  border: none;
+}
+
+#right {
+  display: flex;
+  gap: 55px;
+}
+
+.percentage {
+  display: flex;
+  gap: 14px;
+
+  &::after {
+    content: '';
+    display: block;
+    height: 90px;
+    width: 1px;
+    background-color: #e8e8e8;
+    margin: 23px 0 0 25px;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 15px;
+
+    .percent {
+      font-size: 32px;
+    }
+
+    #completed {
+      font-family: 'Montserrat', serif;
+      font-size: 16px;
+      opacity: 0.6;
+    }
+  }
 }
