@@ -38,8 +38,8 @@ const Book = ({
         </div>
       </div>
       <div className="chapter-div">
-        <p>CURRENT CHAPTER</p>
-        <p>Chapter 3 A lesson learned</p>
+        <p id="current-chapter">CURRENT CHAPTER</p>
+        <p className="completed-task">Chapter 3 A lesson learned</p>
         <button
           type="button"
           className={progressClass}

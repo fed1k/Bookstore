@@ -42,7 +42,7 @@ const Input = () => {
       <form action="post">
         <input type="text" placeholder="Book title" value={state.title} onChange={(e) => handleChangeOfTitle(e)} onKeyUp={(e) => enterEvent(e)} />
         <input type="text" placeholder="Author" value={state.author} onChange={(e) => handleChangeOfAuthor(e)} onKeyUp={(e) => enterEvent(e)} />
-        <button type="button" onClick={addBook}>ADD BOOK</button>
+        <button className="addbook-btn" type="button" onClick={addBook}>ADD BOOK</button>
       </form>
     </div>
   );

@@ -122,7 +122,7 @@
       @include inputfield();
     }
 
-    button {
+    .addbook-btn {
       background-color: #0290ff;
       color: #fff;
       padding: 15px 50px;
@@ -208,12 +208,12 @@
   gap: 20px;
   padding-right: 50px;
 
-  :first-child {
+  #current-chapter {
     font-family: 'Montserrat', serif;
     opacity: 0.4;
   }
 
-  :nth-child(2) {
+  .completed-task {
     font-family: 'Montserrat', serif;
     font-size: 18px;
   }
