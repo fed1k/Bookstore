@@ -118,6 +118,7 @@
       padding: 15px 50px;
       border: none;
       border-radius: 3px;
+      font-family: 'Montserrat', serif;
 
       &:hover {
         cursor: pointer;
@@ -251,4 +252,13 @@
       opacity: 0.6;
     }
   }
+}
+
+.addbook-btn-failed {
+  background-color: red;
+  color: #fff;
+  padding: 15px 50px;
+  border: none;
+  border-radius: 3px;
+  font-family: 'Montserrat', serif;
 }
